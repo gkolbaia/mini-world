@@ -30,26 +30,26 @@ export default class BaseObject {
 
 
     }
-    get id(){
+    get id() {
         return this._id;
     }
-    get name(){
+    get name() {
         return this._name
     }
-    getDistance(target){
-        return (Math.sqrt(Math.pow(this.adress['x']-target.adress['x'],2) + Math.pow(this.adress['y']-target.adress['y'],2)));
+    getDistance(target) {
+        return (Math.sqrt(Math.pow(this.adress['x'] - target.adress['x'], 2) + Math.pow(this.adress['y'] - target.adress['y'], 2)));
 
     }
     checkDistance(target) {
-        if(this.getDistance(target) <=5){
+        if (this.getDistance(target) <= 5) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 }
 
-interface Point{
+interface Point {
     x: number;
     y: number;
 }

@@ -1,0 +1,9 @@
+<div class="mt-1 ml-1">
+    <label for="storeName"></label>
+    <input type="text" name="storeName" [(ngModel)]="elementName">
+    <button (click)="buttonClick($event)" class="btn ml-1">Store</button><br>
+    <button class="btn">Person</button>
+</div>
+<div (dblclick)=clickFunction($event) class="main-page container ">
+    <div (click)="squareClick($event)" *ngFor="let number of array" class="little-square mb-1"></div>
+</div>

@@ -18,31 +18,62 @@ import { Warehouse } from './classes/warehouse';
 
 export class AppComponent {
     title = 'mini-world';
+    sad: boolean = true;
+    array: any[] = [];
+    newElement: any;
+    giorgi: Person;
+    storeName: Store;
+    x: number = null;
+    y: number = null;
+
 
     constructor() {
 
         const baseObject = new BaseObject('tree', 50000, 60000);
-        const giorgi = new Person('giorgi', 5, 6);
+        this.giorgi = new Person('giorgi', 5, 6);
         const cat = new Creature('londre', 12, 11);
+        const irakli = new Person('irakli', 5, 5)
 
         const dog = new Creature('buch', 100, 0);
         const marketi = new Store('marketi', 20, 0);
-        const storesWarehouse = new Warehouse('sawyobi', 10, 20,marketi)
+        const warehouse = new Warehouse('sawyobi', 10, 20, marketi)
+
+        marketi.takestaff(this.giorgi);
+        //console.log(marketi.staff);
+        //marketi.removeStaff(giorgi);
+        //marketi.takestaff(irakli);
+        //console.log(marketi.staff)
+
+        //console.log(giorgi.creatureIsIn)
+        marketi.buyingProducts('book1', 2, 3);
+        marketi.buyingProducts('book2', 2, 3);
 
 
 
+        marketi.getProductsFromWarehouse('book1', 1);
+        console.log('warehouse', warehouse.warehouseProducts);
+        console.log('store', marketi.products)
+        console.log(marketi.checkProduct('book2'))
+    }
+    // buttonClick(e) {
+    //     console.log(e.target);
+    //     this.sad = true;
 
+    //     console.log(this.storeName)
+    // }
+    clickFunction(e) {
+        console.log(e.offsetX, e.offsetY);
+        if (this.sad) {
+            this.storeName = new Store('giorgi', e.offsetX, e.offsetY);
+            this.array.push(this.giorgi);
+            this.x = e.offsetX;
+            this.y = e.offsetY;
 
-        marketi.takestaff(giorgi);
-
-        console.log(marketi.staff);
-        giorgi.enterBuilding(marketi.createWarehouse(20,30));
-        console.log(giorgi.creatureIsIn)
-        console.log(giorgi.creatureIsIn)
-
-
-
+            //this.sad = false;
         }
+    }
+    squareClick(e) {
 
+    }
 }
 
